@@ -81,7 +81,8 @@ public abstract class SelectionMode extends AbstractDrawingMode {
                     for (int i = elementManager.getCurrentObjects().length - 1; i >= 0; i--) {
                         DrawElement element = elementManager.getCurrentObjects()[i];
                         element.setSelected(false);
-                        if (element.isSelectionEnabled() && element.hitTestForSelection(getSelectionPath())) {
+                        Path selectionPath = getSelectionPath();
+                        if (selectionPath != null && element.isSelectionEnabled() && element.hitTestForSelection(selectionPath)) {
                             selectedElements.add(element);
                         }
                     }
